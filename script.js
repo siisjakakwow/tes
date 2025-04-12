@@ -32,7 +32,7 @@ function initParticles() {
         particles.appendChild(particle);
     }
 }
-
+<script src="https://fengari.io/releases/fengari-web.js"></script>
 // Toast Notification System
 function showToast(message, type = 'info') {
     const container = document.getElementById('toastContainer');
@@ -169,7 +169,18 @@ function runCode() {
     // Füge eine kleine Verzögerung hinzu, um bessere Benutzererfahrung zu bieten
     setTimeout(() => {
         try {
-            if (language === 'javascript') {
+            if (language === 'lua') {
+    const lua = fengari.lua;
+    const L = lua.luaL_newstate();
+    lua.luaL_openlibs(L);
+    lua.luaL_loadstring(L, code);
+    lua.lua_pcall(L, 0, lua.LUA_MULTRET, 0);
+    const result = lua.lua_tostring(L, -1) || 'No output';
+    lua.lua_close(L);
+    outputArea.innerHTML = formatOutput(result);
+    showToast('Lua executed successfully!', 'success');
+            }
+            else if (language === 'javascript') {
                 // Sichere Ausführung im try-catch Block
                 const result = executeJavaScript(code);
                 outputArea.innerHTML = formatOutput(result);
