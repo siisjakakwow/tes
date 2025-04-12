@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>D3f4ult Code Editor</title>
+
+    <meta name="description" content="Modern code editor with dark theme and animations">
+
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <link rel="stylesheet" href="styles.css">
+
+</head>
+
+<body>
+
+    <div class="particles"></div>
+
+    
+
+    <header>
+
+        <h1 class="glitch-effect">D3f4ult Code Editor</h1>
+
+    </header>
+
+
+
+    <div class="controls">
+
+        <select id="languageSelect">
+
+            <option value="lua">Lua</option>
+
+            <option value="python">Python</option>
+
+            <option value="javascript">JavaScript</option>
+
+            <option value="ruby">Ruby</option>
+
+            <option value="php">PHP</option>
+
+            <option value="java">Java</option>
+
+            <option value="cpp">C++</option>
+
+            <option value="html">HTML</option>
+
+            <option value="css">CSS</option>
+
+            <option value="bash">Bash</option>
+
+            <option value="swift">Swift</option>
+
+            <option value="typescript">TypeScript</option>
+
+            <option value="go">Go</option>
+
+            <option value="kotlin">Kotlin</option>
+
+        </select>
+
+
+
+        <button class="shortcut-btn" onclick="toggleShortcutsPopup()">
+
+            <i class="fas fa-keyboard"></i> Shortcuts
+
+        </button>
+
+
+
+        <button class="export-btn" onclick="downloadCode()">
+
+            <i class="fas fa-download"></i> Export
+
+        </button>
+
+        <button class="run-btn" onclick="runCode()">
+
+            <i class="fas fa-play"></i> Run
+
+        </button>
+
+    </div>
+
+
+
+    <!-- Tastenkombinationen Popup -->
+
+    <div id="shortcutsPopup" class="popup">
+
+        <div class="popup-content">
+
+            <div class="popup-header">
+
+                <h3>Keyboard Shortcuts</h3>
+
+                <button class="close-btn" onclick="toggleShortcutsPopup()">
+
+                    <i class="fas fa-times"></i>
+
+                </button>
+
+            </div>
+
+            <div class="popup-body">
+
+                <div class="shortcut-list">
+
+                    <div class="shortcut-item">
+
+                        <div class="shortcut-keys">
+
+                            <span class="key">Ctrl</span> + <span class="key">R</span>
+
+                        </div>
+
+                        <div class="shortcut-action">Run Code</div>
+
+                        <button class="shortcut-edit" data-shortcut="run">
+
+                            <i class="fas fa-edit"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="shortcut-item">
+
+                        <div class="shortcut-keys">
+
+                            <span class="key">Ctrl</span> + <span class="key">S</span>
+
+                        </div>
+
+                        <div class="shortcut-action">Export Code</div>
+
+                        <button class="shortcut-edit" data-shortcut="export">
+
+                            <i class="fas fa-edit"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="shortcut-item">
+
+                        <div class="shortcut-keys">
+
+                            <span class="key">Ctrl</span> + <span class="key">F</span>
+
+                        </div>
+
+                        <div class="shortcut-action">Format Code</div>
+
+                        <button class="shortcut-edit" data-shortcut="format">
+
+                            <i class="fas fa-edit"></i>
+
+                        </button>
+
+                    </div>
+
+                    <div class="shortcut-item">
+
+                        <div class="shortcut-keys">
+
+                            <span class="key">Tab</span>
+
+                        </div>
+
+                        <div class="shortcut-action">Insert Tab</div>
+
+                        <button class="shortcut-edit" data-shortcut="tab">
+
+                            <i class="fas fa-edit"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="popup-footer">
+
+                <button class="reset-btn" onclick="resetShortcuts()">
+
+                    <i class="fas fa-undo"></i> Reset to Default
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="editor-container">
+
+        <div class="editor-header">
+
+            <div class="language-info" id="languageInfo">Language: JavaScript</div>
+
+            <div class="line-count" id="lineCount">Line: 1, Column: 1</div>
+
+        </div>
+
+        <textarea id="editor" placeholder="// Write your code here..." spellcheck="false"></textarea>
+
+    </div>
+
+
+
+    <div id="output" class="fade-in"></div>
+
+
+
+    <div class="toast-container" id="toastContainer"></div>
+
+
+
+    <footer>
+
+        <div class="footer-content">
+
+            <div class="made-by">
+
+                <div class="typing-text">Made by D3f4ult</div>
+
+                <a href="https://discord.gg/2ynN9zcVFk" class="social-link discord-link" target="_blank">
+
+                    <i class="fab fa-discord"></i>
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html> 
